@@ -1,0 +1,218 @@
+/* ================= RESET & SAFETY ================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f4f6f9;
+    color: #333;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+}
+
+/* ================= PAGE ================= */
+.page {
+    padding: clamp(14px, 3vw, 30px);
+}
+
+.page.small {
+    max-width: 700px;
+    margin: auto;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: clamp(18px, 2.5vw, 24px);
+}
+
+/* ================= CARD ================= */
+.card,
+.table-card {
+    background: #fff;
+    padding: clamp(16px, 3vw, 25px);
+    border-radius: 14px;
+}
+
+/* ================= BUTTON ================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ff7a45;
+    color: #fff;
+    padding: 12px 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+.btn:hover {
+    background: #e96a1c;
+}
+
+/* ================= NOTE ================= */
+.note {
+    margin-top: 10px;
+    color: #777;
+    font-size: 13px;
+}
+
+/* ================= TOOLBAR ================= */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.search-bar input {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: min(100%, 260px);
+}
+
+/* ================= TABLE ================= */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    white-space: nowrap;
+}
+
+thead {
+    background: #fafafa;
+    font-weight: 600;
+}
+
+/* ================= STATUS BADGES ================= */
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.badge.pending { background:#fff3e0; color:#ef6c00; }
+.badge.processing { background:#e3f2fd; color:#1565c0; }
+.badge.on_route { background:#ede7f6; color:#5e35b1; }
+.badge.delivered { background:#e8f5e9; color:#2e7d32; }
+
+/* ================= SIDEBAR MOBILE SYSTEM ================= */
+.sidebar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.sidebar-overlay {
+    display: none;
+}
+
+/* ================= LARGE SCREENS ================= */
+@media (min-width: 1400px) {
+    .page {
+        max-width: 1400px;
+        margin: auto;
+    }
+}
+
+/* ================= TABLET & MOBILE ================= */
+@media (max-width: 992px) {
+
+    .sidebar {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: 260px;
+        background: #fff;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: 4px 0 14px rgba(0,0,0,0.15);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-toggle {
+        display: inline-flex;
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.4);
+        z-index: 999;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+        padding: clamp(14px, 3vw, 22px);
+    }
+
+    .data-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ================= SMALL PHONES ================= */
+@media (max-width: 480px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .search-bar input {
+        width: 100%;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* ================= IOS SAFE AREA ================= */
+@supports (padding: env(safe-area-inset-bottom)) {
+    .page {
+        padding-bottom: calc(20px + env(safe-area-inset-bottom));
+    }
+}
+
+/* ================= ACCESSIBILITY ================= */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
