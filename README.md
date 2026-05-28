@@ -51,3 +51,38 @@ customer/
 ---
 
 > Built by [Janith Akalanka](https://github.com/Janith2002)
+
+## ⚙️ Local Setup
+
+### Prerequisites
+- PHP 8.x & Apache (XAMPP recommended)
+- MySQL
+
+### Steps
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/Janith2002/isdn_sales_system.git
+cd isdn_sales_system
+
+# 2. Create the database config file
+cp app/config/db.example.php app/config/db.php
+# Then edit app/config/db.php with your MySQL credentials
+
+# 3. Create the database in MySQL
+# Open phpMyAdmin or MySQL CLI and run:
+# CREATE DATABASE isdn_db;
+
+# 4. Import the database schema
+# Import sql/database.sql via phpMyAdmin or:
+# mysql -u root -p isdn_db < sql/database.sql
+
+# 5. Start Apache & MySQL via XAMPP
+# Visit: http://localhost/isdn_sales_system/public/
+```
+
+### Default Login
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@isdn.com | admin123 |
+| Customer | customer@isdn.com | customer123 |
